@@ -11,49 +11,64 @@ import java.util.ArrayList;
  *
  * @author lapi
  */
-public class MyStack implements StackInterface{
+public class MyStack implements StackInterface {
+
     private ArrayList<String> theStack;
-    
-    public MyStack(){
-     theStack = new ArrayList <String>();
+
+    public MyStack() {
+        theStack = new ArrayList<>();
     }
+
     @Override
     public boolean isEmpty() {
-       return theStack.isEmpty();
+        return theStack.isEmpty();
     }
 
     @Override
     public boolean isFull() {
-       return false;
+        return false;
     }
 
     @Override
     public void push(Object item) {
-       theStack.add(0,(String)item);
+        theStack.add((String) item);
     }
 
     @Override
     public Object pop() {
-        if(!theStack.isEmpty()){
-            return theStack.remove(0);
-        }
-        else{
+        if (isEmpty()) {
             return null;
         }
+
+        return theStack.remove(theStack.size() - 1);
     }
 
     @Override
     public Object peek() {
-        if(!theStack.isEmpty()){
-            return theStack.get(0);
-        }
-        else{
+        if (isEmpty()) {
             return null;
         }
+
+        return theStack.get(theStack.size() - 1);
     }
 
     @Override
     public int size() {
         return theStack.size();
+    }
+    
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+
+        for (int i = theStack.size() - 1; i >= 0; i--) {
+            sb.append(theStack.get(i)).append("\n");
+        }
+
+        if (sb.length() == 0) {
+            return "No actions in history.";
+        }
+
+        return sb.toString();
     }
 }
