@@ -10,6 +10,8 @@ package com.mycompany.git;
  */
 public class GUI extends javax.swing.JFrame {
      private SLL issueList = new SLL();
+     private MyQueue issueQueue = new MyQueue();
+     private MyStack history = new MyStack();
 
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(GUI.class.getName());
@@ -35,7 +37,10 @@ public class GUI extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         TextArea = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
-        Traffic = new javax.swing.JRadioButton();
+        IssueName = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        Delete = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -51,43 +56,57 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel1.setText("Current Issues");
 
-        Traffic.setText("jRadioButton1");
-        Traffic.addActionListener(this::TrafficActionPerformed);
+        IssueName.addActionListener(this::IssueNameActionPerformed);
+
+        jLabel2.setText("Issue Name");
+
+        Delete.setText("Mark as done");
+        Delete.addActionListener(this::DeleteActionPerformed);
+
+        jButton1.setText("Delete");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(InsertIssue)
-                                .addGap(56, 56, 56)
-                                .addComponent(ShowIssues))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addComponent(Traffic)))
-                .addContainerGap(95, Short.MAX_VALUE))
+                        .addComponent(Delete)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton1))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel1)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel2)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(IssueName, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(InsertIssue)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(ShowIssues))
+                        .addComponent(jScrollPane1)))
+                .addContainerGap(8, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(64, Short.MAX_VALUE)
-                .addComponent(Traffic)
-                .addGap(31, 31, 31)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(IssueName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(InsertIssue, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ShowIssues))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(56, 56, 56)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(InsertIssue)
-                    .addComponent(ShowIssues))
-                .addGap(35, 35, 35))
+                    .addComponent(Delete)
+                    .addComponent(jButton1))
+                .addContainerGap(72, Short.MAX_VALUE))
         );
 
         pack();
@@ -96,8 +115,8 @@ public class GUI extends javax.swing.JFrame {
     private void InsertIssueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InsertIssueActionPerformed
         // TODO add your handling code here:
         Issues newIssue;
-    String issueName = "Test";
-        if(Traffic.isEnabled()){
+    String issueName = IssueName.getText();
+        if(issueName.toLowerCase().contains("traffic")){
             issueName = "Funziona";
             newIssue = new TransportIssue(issueName);
             
@@ -107,17 +126,61 @@ public class GUI extends javax.swing.JFrame {
         }
         
         issueList.addLast(newIssue);
+        IssueName.setText("");
+        
+        issueQueue.enqueue(newIssue);
+        history.push("Added Issued ID "+newIssue.getID());
     }//GEN-LAST:event_InsertIssueActionPerformed
 
     private void ShowIssuesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowIssuesActionPerformed
         // TODO add your handling code here:
-        TextArea.setText(issueList.toDisplayString());
+         StringBuilder sb = new StringBuilder();
+
+    sb.append("ISSUE LIST \n");
+    sb.append(issueList.toDisplayString()).append("\n");
+
+    sb.append(" QUEUE \n");
+    sb.append(issueQueue.toString());
+    
+    sb.append("History \n");
+    sb.append(history.toString());
+
+    TextArea.setText(sb.toString());
+    
     }//GEN-LAST:event_ShowIssuesActionPerformed
 
-    private void TrafficActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TrafficActionPerformed
+    private void IssueNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IssueNameActionPerformed
         // TODO add your handling code here:
+        IssueName.setText("");
+    }//GEN-LAST:event_IssueNameActionPerformed
+
+    private void DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteActionPerformed
+        // TODO add your handling code here:
+        String input = javax.swing.JOptionPane.showInputDialog(this, "Enter Issue ID to mark as done:");
+
+    if (input == null || input.trim().isEmpty()) {
+        return;
+    }
+
+    try {
+        int id = Integer.parseInt(input);
+        boolean updated = issueList.updateIssueStatus(id, "done");
         
-    }//GEN-LAST:event_TrafficActionPerformed
+        if (updated) {
+            history.push("Marked issue ID " + id + " as done");
+            issueList.deleteById(id);
+            
+            javax.swing.JOptionPane.showMessageDialog(this, "Issue updated successfully.");
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(this, "Issue ID not found.");
+        }
+
+    } catch (NumberFormatException e) {
+        javax.swing.JOptionPane.showMessageDialog(this, "Please enter a valid number.");
+    }
+   
+    TextArea.setText(history.toString());
+    }//GEN-LAST:event_DeleteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -145,11 +208,14 @@ public class GUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Delete;
     private javax.swing.JButton InsertIssue;
+    private javax.swing.JTextField IssueName;
     private javax.swing.JButton ShowIssues;
     private javax.swing.JTextArea TextArea;
-    private javax.swing.JRadioButton Traffic;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
