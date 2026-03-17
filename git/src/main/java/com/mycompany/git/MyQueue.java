@@ -31,7 +31,7 @@ public MyQueue() {
     @Override
     public Object frontElement() {
        if (theQueue.size() > 0 ) {
-		 return theQueue.get(0).getID();
+		 return theQueue.get(0);
     }
     else {
 		return null;
@@ -46,8 +46,36 @@ public MyQueue() {
 
     @Override
     public Object dequeue() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        if (!theQueue.isEmpty()) {
+            return theQueue.remove(0); 
+        } else {
+            return null;
+        }
     }
     
+    public boolean removeById(int id) {
+    for (int i = 0; i < theQueue.size(); i++) {
+        if (theQueue.get(i).getID() == id) {
+            theQueue.remove(i);
+            return true;
+        }
+    }
+    return false;
+}
+    
+    public String toString(){
+        StringBuffer sb = new StringBuffer();
+        
+        
+        for (Issues issue : theQueue) {
+            sb.append(issue.toString()).append("\n");
+        }
+
+        if (sb.length() == 0) {
+            return "No queued issues.";
+        }
+        
+        return sb.toString();
+    }
     
 }
