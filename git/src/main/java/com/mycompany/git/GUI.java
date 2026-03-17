@@ -64,6 +64,7 @@ public class GUI extends javax.swing.JFrame {
         Delete.addActionListener(this::DeleteActionPerformed);
 
         jButton1.setText("Delete");
+        jButton1.addActionListener(this::jButton1ActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -181,6 +182,34 @@ public class GUI extends javax.swing.JFrame {
    
     TextArea.setText(history.toString());
     }//GEN-LAST:event_DeleteActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        String input = javax.swing.JOptionPane.showInputDialog(this, "Enter Issue ID to delete:");
+
+    if (input == null || input.trim().isEmpty()) {
+        return;
+    }
+
+    try {
+        int id = Integer.parseInt(input);
+        boolean deleted = issueList.deleteById(id);
+        
+
+        if (deleted) {
+            history.push("Deleted issue ID " + id);
+            
+            
+            javax.swing.JOptionPane.showMessageDialog(this, "Issue deleted successfully.");
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(this, "Issue ID not found.");
+        }
+
+    } catch (NumberFormatException e) {
+        javax.swing.JOptionPane.showMessageDialog(this, "Please enter a valid number.");
+    }
+    TextArea.setText(history.toString());
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
