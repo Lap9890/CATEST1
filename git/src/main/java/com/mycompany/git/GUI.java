@@ -131,13 +131,13 @@ public class GUI extends javax.swing.JFrame {
     private void InsertIssueBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InsertIssueBtnActionPerformed
         // TODO add your handling code here:
        
-      
+      /* With this Dialog we allow the user to insert name*/ 
         String input = JOptionPane.showInputDialog(this, "Enter Issue Name (Please insert 'transport' if a transport issue) ");
 
         if (input == null || input.trim().isEmpty()) {
             return;
         }
-
+        //We add the Issue Object into the Queue and the SLL, if has the word transport it will be a transportIssue Object 
         Issues newIssue;
         if (input.toLowerCase().contains("transport")) {
             newIssue = new TransportIssue(input);
@@ -157,19 +157,19 @@ public class GUI extends javax.swing.JFrame {
     private void ShowIssuesBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowIssuesBtnActionPerformed
         // TODO add your handling code here:
        
-
+        
         showHistory();
 
     }//GEN-LAST:event_ShowIssuesBtnActionPerformed
 
     private void DoneBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DoneBtnActionPerformed
         // TODO add your handling code here:
-        String input = javax.swing.JOptionPane.showInputDialog(this, "Enter Issue ID to mark as done:");
-
+        String input = JOptionPane.showInputDialog(this, "Enter Issue ID to mark as done:");
+        
     if (input == null || input.trim().isEmpty()) {
         return;
     }
-
+    //if the ID is correct we update the status of the issue and we delete it from the  queue
     try {
         int id = Integer.parseInt(input);
         boolean updated = issueList.updateIssueStatus(id, "done");
@@ -177,9 +177,9 @@ public class GUI extends javax.swing.JFrame {
         if (updated) {
             issueQueue.removeById(id);
             history.push("Marked issue ID " + id + " as done");
-            javax.swing.JOptionPane.showMessageDialog(this, "Issue marked as done.");
+           JOptionPane.showMessageDialog(this, "Issue marked as done.");
         } else {
-            javax.swing.JOptionPane.showMessageDialog(this, "Issue ID not found.");
+            JOptionPane.showMessageDialog(this, "Issue ID not found.");
         }
 
     } catch (NumberFormatException e) {
@@ -192,7 +192,7 @@ public class GUI extends javax.swing.JFrame {
     private void DeleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteBtnActionPerformed
         // TODO add your handling code here:
         
-        //The delete button allow us to delete Issues with the ID 
+        //The delete button allow us to delete Issues with the ID, it will also delete it from the SLL 
         String input = JOptionPane.showInputDialog(this, "Enter Issue ID to delete:");
         if (input == null || input.trim().isEmpty()) {
             return;
@@ -225,7 +225,7 @@ public class GUI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "No issues in queue.");
             return;
         }
-
+        //We process the next item by ID from the queue 
         issueList.deleteById(nextIssue.getID());
         history.push("Processed issue ID " + nextIssue.getID());
 
