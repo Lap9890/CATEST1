@@ -25,19 +25,19 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+              <Component id="IssueLabel" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace pref="28" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="Next" min="-2" max="-2" attributes="0"/>
+                  <Component id="NextBtn" min="-2" max="-2" attributes="0"/>
                   <Group type="102" attributes="0">
-                      <Component id="InsertIssue" min="-2" max="-2" attributes="0"/>
+                      <Component id="InsertIssueBtn" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="ShowIssues" min="-2" max="-2" attributes="0"/>
+                      <Component id="ShowIssuesBtn" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="Delete" min="-2" max="-2" attributes="0"/>
+                      <Component id="DeleteBtn" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="DoneBtn" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -51,38 +51,38 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+              <Component id="IssueLabel" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="InsertIssue" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                  <Component id="ShowIssues" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="Delete" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="InsertIssueBtn" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                  <Component id="ShowIssuesBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="DeleteBtn" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="DoneBtn" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="Next" min="-2" max="-2" attributes="0"/>
+              <Component id="NextBtn" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="122" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JButton" name="InsertIssue">
+    <Component class="javax.swing.JButton" name="InsertIssueBtn">
       <Properties>
         <Property name="text" type="java.lang.String" value="Insert Issue"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="InsertIssueActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="InsertIssueBtnActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="ShowIssues">
+    <Component class="javax.swing.JButton" name="ShowIssuesBtn">
       <Properties>
         <Property name="text" type="java.lang.String" value="Display Issues"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ShowIssuesActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ShowIssuesBtnActionPerformed"/>
       </Events>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
@@ -100,9 +100,9 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JLabel" name="jLabel1">
+    <Component class="javax.swing.JLabel" name="IssueLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Current Issues"/>
+        <Property name="text" type="java.lang.String" value="Welcome!"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="DoneBtn">
@@ -113,20 +113,20 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DoneBtnActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="Delete">
+    <Component class="javax.swing.JButton" name="DeleteBtn">
       <Properties>
         <Property name="text" type="java.lang.String" value="Delete"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DeleteActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DeleteBtnActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="Next">
+    <Component class="javax.swing.JButton" name="NextBtn">
       <Properties>
         <Property name="text" type="java.lang.String" value="Process Next"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NextActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NextBtnActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

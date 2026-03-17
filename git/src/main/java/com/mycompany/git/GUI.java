@@ -25,8 +25,9 @@ public class GUI extends javax.swing.JFrame {
         initComponents();
     }
     
+    //This method print the full ISSUE list , the queue and the SLL everytime is called 
     public void showHistory(){
-    
+        
        StringBuilder sb = new StringBuilder();
 
         sb.append("ISSUE LIST \n");
@@ -51,37 +52,37 @@ public class GUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        InsertIssue = new javax.swing.JButton();
-        ShowIssues = new javax.swing.JButton();
+        InsertIssueBtn = new javax.swing.JButton();
+        ShowIssuesBtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         TextArea = new javax.swing.JTextArea();
-        jLabel1 = new javax.swing.JLabel();
+        IssueLabel = new javax.swing.JLabel();
         DoneBtn = new javax.swing.JButton();
-        Delete = new javax.swing.JButton();
-        Next = new javax.swing.JButton();
+        DeleteBtn = new javax.swing.JButton();
+        NextBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        InsertIssue.setText("Insert Issue");
-        InsertIssue.addActionListener(this::InsertIssueActionPerformed);
+        InsertIssueBtn.setText("Insert Issue");
+        InsertIssueBtn.addActionListener(this::InsertIssueBtnActionPerformed);
 
-        ShowIssues.setText("Display Issues");
-        ShowIssues.addActionListener(this::ShowIssuesActionPerformed);
+        ShowIssuesBtn.setText("Display Issues");
+        ShowIssuesBtn.addActionListener(this::ShowIssuesBtnActionPerformed);
 
         TextArea.setColumns(20);
         TextArea.setRows(5);
         jScrollPane1.setViewportView(TextArea);
 
-        jLabel1.setText("Current Issues");
+        IssueLabel.setText("Welcome!");
 
         DoneBtn.setText("Mark as done");
         DoneBtn.addActionListener(this::DoneBtnActionPerformed);
 
-        Delete.setText("Delete");
-        Delete.addActionListener(this::DeleteActionPerformed);
+        DeleteBtn.setText("Delete");
+        DeleteBtn.addActionListener(this::DeleteBtnActionPerformed);
 
-        Next.setText("Process Next");
-        Next.addActionListener(this::NextActionPerformed);
+        NextBtn.setText("Process Next");
+        NextBtn.addActionListener(this::NextBtnActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -89,18 +90,18 @@ public class GUI extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(36, 36, 36)
-                .addComponent(jLabel1)
+                .addComponent(IssueLabel)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(28, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Next)
+                    .addComponent(NextBtn)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(InsertIssue)
+                        .addComponent(InsertIssueBtn)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ShowIssues)
+                        .addComponent(ShowIssuesBtn)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Delete)
+                        .addComponent(DeleteBtn)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(DoneBtn))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -110,24 +111,24 @@ public class GUI extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(IssueLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(InsertIssue, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ShowIssues)
-                    .addComponent(Delete)
+                    .addComponent(InsertIssueBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ShowIssuesBtn)
+                    .addComponent(DeleteBtn)
                     .addComponent(DoneBtn))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Next)
+                .addComponent(NextBtn)
                 .addContainerGap(122, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void InsertIssueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InsertIssueActionPerformed
+    private void InsertIssueBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InsertIssueBtnActionPerformed
         // TODO add your handling code here:
        
       
@@ -151,15 +152,15 @@ public class GUI extends javax.swing.JFrame {
 
            showHistory();
 
-    }//GEN-LAST:event_InsertIssueActionPerformed
+    }//GEN-LAST:event_InsertIssueBtnActionPerformed
 
-    private void ShowIssuesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowIssuesActionPerformed
+    private void ShowIssuesBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowIssuesBtnActionPerformed
         // TODO add your handling code here:
        
 
         showHistory();
 
-    }//GEN-LAST:event_ShowIssuesActionPerformed
+    }//GEN-LAST:event_ShowIssuesBtnActionPerformed
 
     private void DoneBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DoneBtnActionPerformed
         // TODO add your handling code here:
@@ -188,8 +189,10 @@ public class GUI extends javax.swing.JFrame {
         showHistory();
     }//GEN-LAST:event_DoneBtnActionPerformed
 
-    private void DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteActionPerformed
+    private void DeleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteBtnActionPerformed
         // TODO add your handling code here:
+        
+        //The delete button allow us to delete Issues with the ID 
         String input = JOptionPane.showInputDialog(this, "Enter Issue ID to delete:");
         if (input == null || input.trim().isEmpty()) {
             return;
@@ -200,6 +203,7 @@ public class GUI extends javax.swing.JFrame {
             boolean deleted = issueList.deleteById(id);
 
             if (deleted) {
+                //If true we delete issue from the queue and update the SLL 
                 issueQueue.removeById(id);
                 history.push("Deleted issue ID " + id);
                 JOptionPane.showMessageDialog(this, "Issue deleted successfully.");
@@ -211,9 +215,9 @@ public class GUI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Please enter a valid number.");
         }
         showHistory();
-    }//GEN-LAST:event_DeleteActionPerformed
+    }//GEN-LAST:event_DeleteBtnActionPerformed
 
-    private void NextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NextActionPerformed
+    private void NextBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NextBtnActionPerformed
         // TODO add your handling code here:
         Issues nextIssue = (Issues) issueQueue.dequeue();
 
@@ -229,7 +233,7 @@ public class GUI extends javax.swing.JFrame {
 
         JOptionPane.showMessageDialog(this,
                 "Processed: " + nextIssue.toString());
-    }//GEN-LAST:event_NextActionPerformed
+    }//GEN-LAST:event_NextBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -237,13 +241,13 @@ public class GUI extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Delete;
+    private javax.swing.JButton DeleteBtn;
     private javax.swing.JButton DoneBtn;
-    private javax.swing.JButton InsertIssue;
-    private javax.swing.JButton Next;
-    private javax.swing.JButton ShowIssues;
+    private javax.swing.JButton InsertIssueBtn;
+    private javax.swing.JLabel IssueLabel;
+    private javax.swing.JButton NextBtn;
+    private javax.swing.JButton ShowIssuesBtn;
     private javax.swing.JTextArea TextArea;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
