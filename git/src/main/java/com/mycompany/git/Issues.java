@@ -49,7 +49,7 @@ public class Issues {
 
     @Override
     public String toString() {
-        return "Issue ID: " + id + " | Type: " + getType() +
-               " | Name: " + name + " | Status: " + status;
+        return "Issue ID: " + id + "  Type: " + getType() +
+               "  Name: " + name + " Status: " + status;
     }
 }
